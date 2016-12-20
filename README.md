@@ -3,6 +3,10 @@
 - This has been tested against php 5.5.12
 - Have composer installed https://getcomposer.org/download/
 - Clone this project
+- Run composer
+```
+    composer install
+```
 - Run the program
 ``` 
     cd bin 
