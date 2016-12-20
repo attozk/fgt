@@ -1,0 +1,48 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Program must accept input from two sources: a filename passed in
+ * command line arguments and STDIN. For example, on Linux or OSX both
+ * './program input.txt' and './program < input.txt' should work.
+ */
+
+require __DIR__ . '/../vendor/autoload.php';
+
+$filePath = '';
+$stdout = fopen('php://output', 'w'); //output handler
+$appArgs = array(); // docopt arguments
+
+// accept filepath
+if (!empty($argv[1]))
+{
+    $filePath = $argv[1];
+
+    if (is_file($filePath))
+    {
+        $appArgs = array(
+            'filepath' => $filePath
+        );
+    }
+    else
+        $error = 'Invalid file name or path';
+}
+// assume stdin
+else
+{
+    if ($stdin = fopen('php://stdin', 'r'))
+    {
+        $input = '';
+
+        while(!feof($stdin))
+            $input .= fgets($stdin);
+
+        fclose($stdin);
+
+        $appArgs = array(
+            'stdin' => $input
+        );
+    }
+}
+
+\FinanceGeni\Interview\App::exectue($appArgs);

@@ -1,0 +1,16 @@
+{
+    "name": "FinanceGeni/Interview",
+    "description": "Finance Geni Interview Code Test",
+    "require": {
+      "php": ">= 5.5.12"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.8.17"
+    },
+    "autoload": {
+        "psr-4": {
+            "FinanceGeni\\Interview\\": "src",
+             "FinanceGeni\\Interview\\Tests\\": "tests"
+        }
+    }
+}
